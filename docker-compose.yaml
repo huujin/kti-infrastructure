@@ -29,8 +29,12 @@ services:
     image: "postgres:15.0-alpine"
     container_name: postgres
     environment:
-      POSTGRES_PASSWORD: Password!
+      - POSTGRES_PASSWORD=Passw0rd!
     ports:
       - "5432:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      # - /docker-entrypoint-initdb.d
+      # # - ./init.sql:/docker-entrypoint-init.d/init.sql
+      # # /docker-entrypoint-initdb.d,
